@@ -20,6 +20,10 @@ FROM python:3.10-slim
 # Set working directory inside the container
 WORKDIR /app
 
+# Copy installed dependencies from the builder stage
+COPY --from=builder /usr/local/lib/python3.10/site-packages /usr/local/lib/python3.10/site-packages
+COPY --from=builder /usr/local/bin /usr/local/bin
+
 # Copy the rest of the application code
 COPY . .
 
@@ -27,4 +31,4 @@ COPY . .
 EXPOSE 8000
 
 # Command to run the FastAPI app with Uvicorn
-CMD ["uvicorn", "main:app"]
+CMD ["python", "-m", "uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000", "--workers", "4"]
