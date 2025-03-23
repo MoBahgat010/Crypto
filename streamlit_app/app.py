@@ -75,7 +75,7 @@ elif st.session_state.current_page == "Crypto Predictor":
             prob = data.get("predicted_probability", 0)
             recommendation = data.get("recommendation", "Unknown")
 
-            st.metric(label="Predicted Probability", value=f"{prob:.2f}%")
+            st.metric(label="Predicted Probability", value=f"{prob}%")
             
         else:
             st.error("Prediction failed!")
