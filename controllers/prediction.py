@@ -165,6 +165,8 @@ def prepare_data_for_prediction():
 
     return actual_prices, predictions
 
+prepare_data_for_prediction()
+
 
 # Plot Results with Plotly
 # fig = go.Figure()
